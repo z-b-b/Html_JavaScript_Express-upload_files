@@ -1,7 +1,7 @@
 const express = require('express');
 const app     = express();
 const file_upload = require('express-fileupload');
-const fs = require('fs');
+const fs   = require('fs');
 const path = require('path');
 
 const PORT = 8000;
@@ -10,12 +10,10 @@ app.use(express.static("public"));
 app.use(file_upload());
 
 app.post('/upload', function(req, res)
-{
-  console.log(req.body);
-  
+{  
   if (!req.files || Object.keys(req.files).length === 0)
     return res.status(400).send('Error!');
-
+  
   const folder_c   = __dirname + `\\c`  ;
   const folder_cpp = __dirname + `\\cpp`;
 
