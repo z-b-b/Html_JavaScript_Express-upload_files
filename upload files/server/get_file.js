@@ -4,15 +4,11 @@ const file_upload = require('express-fileupload');
 const fs = require('fs');
 const path = require('path');
 
-// שינוי שלי
 const PORT = 8000;
 
-// שינוי שלי
 app.use(express.static("public"));
-
 app.use(file_upload());
 
-// שינוי שלי
 app.post('/upload', function(req, res)
 {
   console.log(req.body);
@@ -71,5 +67,4 @@ app.post('/upload', function(req, res)
   res.send('Files uploaded!');
 });  
 
-// שינוי שלי
 app.listen(PORT);
