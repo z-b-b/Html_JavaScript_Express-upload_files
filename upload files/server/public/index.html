@@ -1,67 +1,66 @@
 <!DOCTYPE html>
+    <html>
+        <body style="text-align: center; background-color: bisque;">
+            <header>
+                <h1><u>Send to server</u></h1>
+            </header>
+            <main>
+                <form name='upload_form'
+                    id='upload_form'
+                    action='http://localhost:8000/upload'
+                    method='post'
+                    encType='multipart/form-data'
+                    onsubmit='event.returnValue = Check_Data();'>
 
-<html>
-    <body style="text-align: center; background-color: bisque;">
-        <header>
-            <h1><u>Send to server</u></h1>
-        </header>
-        <main>
-            <form name='upload_form'
-                id='upload_form'
-                action='http://localhost:8000/upload'
-                method='post'
-                encType='multipart/form-data'
-                onsubmit='event.returnValue = Check_Data();'>
+                    <!-- uploading files -->
+                    <div>
+                        <label for="files">Select files to upload to the server:</label>
+                        <input type="file" name="file_name" id="files" multiple>
+                    </div>
 
-                <!-- העלאת קבצים -->
-                <div>
-                    <label for="files">Select files to upload to the server:</label>
-                    <input type="file" name="file_name" id="files" multiple>
-                </div>
+                    <br>
 
-                <br>
+                    <!-- uploading a folder -->
+                    <div>    
+                        <label for="folder">Select a folder to upload to the server:</label>
+                        <input type="file" name="file_name" id="folder" webkitdirectory="true" directory>
+                    </div>
 
-                <!-- העלאת תיקייה -->
-                <div>    
-                    <label for="folder">Select a folder to upload to the server:</label>
-                    <input type="file" name="file_name" id="folder" webkitdirectory="true" directory>
-                </div>
+                    <br>
 
-                <br>
+                    <!-- upload additional data -->
+                    <div>
+                        Optional data to upload to the server:
+                        <select name="choices" id="choices">
+                            <option name="choice1" id="choice1" value="Move to server choice1">Move to server choice1</option>
+                            <option name="choice2" id="choice2" value="Move to server choice2">Move to server choice2</option>
+                        </select>
+                        <input type="text" name="string" id="string" value="Move to server a string ">
+                    </div>
 
-                <!-- העלאת נתונים נוספים -->
-                <div>
-                    Optional data to upload to the server:
-                    <select name="choices" id="choices">
-                        <option name="choice1" id="choice1" value="Move to server choice1">Move to server choice1</option>
-                        <option name="choice2" id="choice2" value="Move to server choice2">Move to server choice2</option>
-                    </select>
-                    <input type="text" name="string" id="string" value="Move to server a string ">
-                </div>
+                    <br>
 
-                <br>
-                
-                <!-- בדוק ושלח לשרת -->
-                <div>
-                    <input type="submit" value="Upload!">
-                </div>
-            </form>
-        </main>
-        <script>
-            function Check_Data()
-            {   
-                let file_route   = document.getElementById("files");
-                let folder_route = document.getElementById("folder");
+                    <!-- check and send to server -->
+                    <div>
+                        <input type="submit" value="Upload!">
+                    </div>
+                </form>
+            </main>
+            <script>
+                function Check_Data()
+                {   
+                    let file_route   = document.getElementById("files");
+                    let folder_route = document.getElementById("folder");
 
-                if (file_route.value == "" || folder_route.value == "")
-                {
-                    alert("Error!");
-                    return false;
+                    if (file_route.value == "" || folder_route.value == "")
+                    {
+                        alert("Error!");
+                        return false;
+                    }
+
+                    alert("Success!");
+                    return true;
                 }
-                
-                alert("Success!");
-                return true;
-            }
-        </script>
-    </body>
-</html>
+            </script>
+        </body>
+    </html>
